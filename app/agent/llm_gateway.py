@@ -15,8 +15,8 @@ class LLMGateway:
 
     @staticmethod
     def execute_inference(
-        sanitized_prompt: str,
         ephemeral_key: str,
+        sanitized_prompt: str,
         model_name: str = "aegis-secure-agent"
     ) -> Dict[str, Any]:
         """

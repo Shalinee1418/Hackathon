@@ -8,7 +8,7 @@ Verifies:
 """
 
 import unittest
-from app.crypto.client_cipher import ClientCipher
+from app.crypto.client_cipher import client_session_cipher
 from app.agent.blind_agent import EntitySanitizer, blind_agent
 from app.agent.custodian_network import custodian_network
 from app.crypto.pedersen_vss import pedersen_vss
@@ -18,7 +18,8 @@ from app.crypto.zero_leakage import key_to_int
 class TestBlindPrivateAgent(unittest.TestCase):
 
     def setUp(self):
-        self.cipher = ClientCipher()
+        self.cipher = client_session_cipher
+        blind_agent.cipher = self.cipher
         # Initialize custodian network
         secret_int = key_to_int("sk-live-test-key-for-agent-999")
         shares, comm_set, _, _ = pedersen_vss.split_secret(
