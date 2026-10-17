@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AegisAgent - Verifiable Secret Sharing & Blind AI Agent</title>
+  <meta name="description" content="A zero-trust cryptographic framework combining Pedersen Verifiable Secret Sharing (VSS) with a private AI agent preventing master key leakage.">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="brand-wrapper">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-title">AEGIS // AGENT</div>
+        <div class="brand-subtitle">Zero-Leakage AI & Verifiable Secret Sharing</div>
+      </div>
+    </div>
+
+    <!-- Nav Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-target="viewAgent">
+        <span>🤖</span> AI Agent Enclave
+      </button>
+      <button class="tab-btn" data-target="viewMathLab">
+        <span>📐</span> VSS Math Lab
+      </button>
+      <button class="tab-btn" data-target="viewNodes">
+        <span>🌐</span> Custodian Network
+      </button>
+      <button class="tab-btn" data-target="viewAudit">
+        <span>📜</span> Cryptographic Proofs
+      </button>
+    </nav>
+
+    <!-- Quorum Status Indicator -->
+    <div class="quorum-badge" id="quorumHeaderBadge">
+      <span class="pulse-led"></span>
+      VSS QUORUM: 5/5 ONLINE (Req: 3)
+    </div>
+  </header>
+
+  <!-- Main Body Container -->
+  <main class="main-container">
+
+    <!-- Hero Overview Banner -->
+    <section class="hero-card">
+      <div class="hero-text">
+        <h1>Zero-Trust Cryptographic AI Agent & Threshold Key Shield</h1>
+        <p>
+          Master API keys and credentials are <strong>never stored on disk or sent to third-party APIs</strong>. 
+          Keys are sharded across distributed custodian enclaves using <strong>(t, n) Pedersen Verifiable Secret Sharing (VSS)</strong> 
+          with information-theoretically secure commitments. Prompts are sanitized with cryptographic shadow tokens, preventing telemetry or upstream providers from inspecting master secrets.
+        </p>
+        <div class="hero-pills">
+          <span class="hero-pill highlight">Pedersen VSS (1536-bit MODP)</span>
+          <span class="hero-pill highlight">AES-256-GCM Client Cipher</span>
+          <span class="hero-pill">Zero-Leakage In-Memory memset(0)</span>
+          <span class="hero-pill">Merkle Audit Ledger</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= VIEW 1: AI AGENT STUDIO ================= -->
+    <section id="viewAgent" class="view-section active">
+      <div class="agent-grid">
+        
+        <!-- Left: Client Trust Perimeter -->
+        <div class="glass-panel col-panel">
+          <div class="col-header">
+            <h3><span>💻</span> Client Trust Perimeter</h3>
+            <span class="perimeter-tag tag-private">CONFIDENTIAL</span>
+          </div>
+
+          <div>
+            <label class="template-label" for="txtAgentPrompt">Confidential User Prompt</label>
+            <textarea id="txtAgentPrompt" class="prompt-box" placeholder="Enter sensitive instructions containing API keys, financial records, or secrets...">Conduct private compliance audit on client portfolio alice@hedgefund.com with asset balance $4,850,000 USD and secret auth PIN 987654.</textarea>
+          </div>
+
+          <div class="quick-templates">
+            <span class="template-label">Sample Vulnerable Prompts:</span>
+            <div class="template-chips">
+              <button class="chip-btn" onclick="loadTemplate('finance')">💰 Financial Balances</button>
+              <button class="chip-btn" onclick="loadTemplate('api')">🔑 Master API Token</button>
+              <button class="chip-btn" onclick="loadTemplate('medical')">🏥 Patient PII & SSN</button>
+            </div>
+          </div>
+
+          <button id="btnDispatchPrompt" class="btn-primary">
+            <span>🔒</span> Client-Side Encrypt & Execute
+          </button>
+
+          <div style="margin-top:auto;">
+            <div class="col-header" style="margin-bottom:0.75rem;">
+              <h3><span>✨</span> Final Rehydrated Output</h3>
+              <span class="perimeter-tag tag-private">DE-OBFUSCATED</span>
+            </div>
+            <div id="txtClientResponse" class="code-inspector" style="color:#e2e8f0; min-height:120px;">
+              Ready. Submit a prompt above to watch the end-to-end zero-leakage execution pipeline in real time.
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle: Cryptographic Pipeline Trace -->
+        <div class="glass-panel col-panel">
+          <div class="col-header">
+            <h3><span>⚙️</span> Cryptographic Pipeline Trace</h3>
+            <span class="perimeter-tag tag-isolated">ENCLAVE ORCHESTRATION</span>
+          </div>
+
+          <div class="stepper-list">
+            <div class="step-card" id="step-1">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <div class="step-title">Client-Side Authenticated Encryption</div>
+                <div class="step-desc">Encrypts prompt with AES-256-GCM before exiting client network boundary.</div>
+                <div class="step-latency">Pending...</div>
+              </div>
+            </div>
+
+            <div class="step-card" id="step-2">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <div class="step-title">Blind Entity Sanitizer (Shadow Tokens)</div>
+                <div class="step-desc">Substitutes sensitive credentials, PII, and balances with HMAC shadow tokens.</div>
+                <div class="step-latency">Pending...</div>
+              </div>
+            </div>
+
+            <div class="step-card" id="step-3">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <div class="step-title">Custodian Quorum Solicitation</div>
+                <div class="step-desc">Queries independent enclave nodes for their custodied VSS share fragments.</div>
+                <div class="step-latency">Pending...</div>
+              </div>
+            </div>
+
+            <div class="step-card" id="step-4">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <div class="step-title">Pedersen Commitment Share Verification</div>
+                <div class="step-desc">Mathematically checks <code>g^s * h^r == ∏ C_k^(i^k) (mod p)</code> to detect rogue nodes.</div>
+                <div class="step-latency">Pending...</div>
+              </div>
+            </div>
+
+            <div class="step-card" id="step-5">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <div class="step-title">Zero-Leakage In-Memory Execution</div>
+                <div class="step-desc">Ephemeral key reconstructed in transient RAM buffer, used, and zeroized via <code>memset(0)</code>.</div>
+                <div class="step-latency">Pending...</div>
+              </div>
+            </div>
+
+            <div class="step-card" id="step-6">
+              <div class="step-num">6</div>
+              <div class="step-content">
+                <div class="step-title">Local Enclave De-obfuscation</div>
+                <div class="step-desc">Re-hydrates shadow tokens back to real values inside the client trust perimeter.</div>
+                <div class="step-latency">Pending...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: What Upstream API / Network Sees -->
+        <div class="glass-panel col-panel">
+          <div class="col-header">
+            <h3><span>🌐</span> What Upstream LLM / API Sees</h3>
+            <span class="perimeter-tag tag-public">EXTERNAL EXPOSURE</span>
+          </div>
+
+          <div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem;">
+              Sanitized Prompt Egress (Zero Master Keys, Zero Plaintext PII):
+            </div>
+            <div id="txtUpstreamPrompt" class="code-inspector" style="color:#fdba74; min-height:100px;">
+              Awaiting blind pipeline dispatch...
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;">
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.4rem;">
+              Raw Upstream LLM Response (Contains Only Shadow Tokens):
+            </div>
+            <div id="txtUpstreamResponse" class="code-inspector" style="color:#cbd5e1; min-height:100px;">
+              Awaiting upstream LLM response...
+            </div>
+          </div>
+
+          <div style="margin-top:auto;">
+            <div style="font-size:0.75rem; color:var(--text-dim); margin-bottom:0.4rem;">
+              Cryptographic Receipt ID Preview:
+            </div>
+            <pre id="clientReceiptPreview" class="code-inspector" style="max-height:100px; font-size:0.7rem; color:#94a3b8;">
+Awaiting execution receipt...
+            </pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= VIEW 2: VSS MATHEMATICAL LAB ================= -->
+    <section id="viewMathLab" class="view-section">
+      <div class="math-lab-grid">
+        
+        <!-- Controls Column -->
+        <div class="glass-panel col-panel">
+          <div class="col-header">
+            <h3><span>⚙️</span> Scheme Parameters</h3>
+            <span class="perimeter-tag tag-isolated">PEDERSEN VSS</span>
+          </div>
+
+          <div>
+            <label class="template-label" for="vssSecretInput">Secret to Share (String or Int)</label>
+            <input type="text" id="vssSecretInput" class="prompt-box" style="min-height:unset; padding:0.6rem;" value="sk-aegis-master-live-token-42">
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+            <div>
+              <label class="template-label" for="vssThresholdInput">Threshold (t)</label>
+              <input type="number" id="vssThresholdInput" class="prompt-box" style="min-height:unset; padding:0.6rem;" min="2" max="6" value="3">
+            </div>
+            <div>
+              <label class="template-label" for="vssParticipantsInput">Participants (n)</label>
+              <input type="number" id="vssParticipantsInput" class="prompt-box" style="min-height:unset; padding:0.6rem;" min="3" max="8" value="5">
+            </div>
+          </div>
+
+          <div>
+            <label class="template-label" for="vssSchemeInput">Cryptographic Scheme</label>
+            <select id="vssSchemeInput" class="prompt-box" style="min-height:unset; padding:0.6rem; cursor:pointer;">
+              <option value="pedersen">Pedersen VSS (Information-Theoretic Hiding)</option>
+              <option value="feldman">Feldman VSS (Discrete-Log Commitments)</option>
+            </select>
+          </div>
+
+          <button id="btnRunVSSSplit" class="btn-primary" style="margin-top:0.5rem;">
+            ⚡ Compute VSS Commitments & Shares
+          </button>
+
+          <div style="margin-top:1rem;">
+            <label class="template-label">Pedersen Commitments (C_k = g^a_k * h^b_k mod p):</label>
+            <div id="commitmentsList" class="code-inspector" style="max-height:160px; font-size:0.7rem;">
+              Computing commitments...
+            </div>
+          </div>
+
+          <button id="btnVSSReconstruct" class="btn-primary" style="background:linear-gradient(135deg, #10b981, #059669); margin-top:0.5rem;">
+            🔓 Test Lagrange Secret Reconstruction
+          </button>
+          <div id="reconstructResultBox" style="font-size:0.8rem; margin-top:0.5rem;"></div>
+        </div>
+
+        <!-- Canvas and Share Verification Column -->
+        <div class="glass-panel col-panel">
+          <div class="col-header">
+            <h3><span>📈</span> Polynomial Curve & Share Verification</h3>
+            <span class="perimeter-tag tag-private">MATHEMATICAL PROOF</span>
+          </div>
+
+          <div class="canvas-wrapper">
+            <canvas id="vssCanvas"></canvas>
+            <div class="canvas-legend">
+              <div class="legend-item"><span class="legend-dot dot-gold"></span> Master Secret f(0)</div>
+              <div class="legend-item"><span class="legend-dot dot-cyan"></span> Valid Node Share (x_i, y_i)</div>
+              <div class="legend-item"><span class="legend-dot dot-curve"></span> Degree (t-1) Polynomial f(x)</div>
+            </div>
+          </div>
+
+          <div class="vss-table-wrapper">
+            <table class="vss-table">
+              <thead>
+                <tr>
+                  <th>Participant</th>
+                  <th>Secret Share s_i = f(i)</th>
+                  <th>Blinder r_i = f'(i)</th>
+                  <th>Commitment Check</th>
+                  <th>Fraud Simulation</th>
+                </tr>
+              </thead>
+              <tbody id="vssTableBody">
+                <!-- Injected via app.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= VIEW 3: CUSTODIAN NETWORK ================= -->
+    <section id="viewNodes" class="view-section">
+      <div class="glass-panel col-panel">
+        <div class="col-header">
+          <div>
+            <h3><span>🌐</span> Distributed Custodian Enclave Cluster</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">
+              Click <strong>"Inject Byzantine Fault"</strong> on any node to corrupt its share bits. 
+              The VSS mathematical verification engine will detect the malicious share and recover the secret using the remaining honest nodes!
+            </p>
+          </div>
+          <span class="perimeter-tag tag-isolated">BYZANTINE FAULT TOLERANCE</span>
+        </div>
+
+        <div class="nodes-grid" id="nodesGridContainer">
+          <!-- Dynamically populated by node_topology.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= VIEW 4: CRYPTOGRAPHIC PROOFS & MERKLE LEDGER ================= -->
+    <section id="viewAudit" class="view-section">
+      <div class="agent-grid" style="grid-template-columns: 1fr 1fr;">
+        
+        <div class="glass-panel col-panel">
+          <div class="col-header">
+            <h3><span>📜</span> Verifiable Audit Receipts</h3>
+            <button class="chip-btn" id="btnRefreshAudit">🔄 Refresh Ledger</button>
+          </div>
+
+          <div id="auditLogContainer" style="overflow-y:auto; max-height:550px;">
+            <!-- Populated via app.js -->
+          </div>
+        </div>
+
+        <div class="glass-panel col-panel">
+          <div class="col-header">
+            <h3><span>🌳</span> Memory Vault & Merkle Root Chain</h3>
+            <span class="perimeter-tag tag-private">TAMPER-EVIDENT</span>
+          </div>
+
+          <div style="background:rgba(0,0,0,0.4); padding:1rem; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
+            <div style="font-size:0.75rem; color:var(--text-dim);">LATEST MERKLE ROOT HASH:</div>
+            <code id="merkleRootDisplay" style="color:var(--accent-cyan); font-size:0.85rem; word-break:break-all;">GENESIS_ROOT</code>
+            <div style="font-size:0.75rem; color:var(--text-dim); margin-top:0.75rem;">TOTAL ENCRYPTED MEMORY BLOCKS:</div>
+            <span id="totalRecordsDisplay" style="font-size:1.1rem; font-weight:700; color:#fff;">0</span>
+          </div>
+
+          <div style="margin-top:1.5rem;">
+            <h4 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--accent-cyan);">Cryptographic Security Guarantees:</h4>
+            <ul style="font-size:0.85rem; color:var(--text-muted); line-height:1.7; padding-left:1.25rem;">
+              <li><strong>Information-Theoretic Hiding:</strong> Pedersen commitments blind the master secret $s$ with $h^r$, ensuring even infinite compute cannot reveal the secret from commitments alone.</li>
+              <li><strong>Computational Binding:</strong> Under the Discrete Logarithm assumption in $\mathbb{Z}_p^*$, a cheating dealer cannot generate two openings to the same commitment.</li>
+              <li><strong>Zero Master Key Footprint:</strong> Memory buffers containing ephemeral keys are explicitly zeroized using in-place byte overrides followed by garbage collection sweeps.</li>
+              <li><strong>Blind Context Sanitization:</strong> Sensitive values are mapped to HMAC shadow tokens; external LLM providers receive zero plaintext PII.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div>
+      <strong>AegisAgent</strong> &bull; Hackathon Cryptographic & Private AI Project
+    </div>
+    <div style="font-family:var(--font-mono); font-size:0.75rem;">
+      RFC 3526 MODP 1536-bit &bull; Pedersen VSS &bull; AES-256-GCM &bull; SHA-256 Merkle Ledger
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/static/js/vss_visualizer.js"></script>
+  <script src="/static/js/node_topology.js"></script>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
