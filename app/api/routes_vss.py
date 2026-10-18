@@ -30,13 +30,14 @@ def split_secret_endpoint(req: VSSSplitRequest) -> Dict[str, Any]:
                 threshold=req.threshold,
                 num_participants=req.num_participants
             )
-            # Evaluate polynomial points for graph visualization
+            # Evaluate scaled polynomial points for visual graph rendering
             curve_points = []
+            # Scale large 1536-bit coefficients down to 0-1000 range for canvas visualization
+            scaled_coeffs = [(c % 10000) for c in secret_coeffs[:req.threshold]]
             for step in range(0, (req.num_participants + 1) * 10 + 1):
                 x_val = step / 10.0
-                # Float interpolation for visual rendering
-                y_val = sum(c * (x_val ** k) for k, c in enumerate(secret_coeffs[:req.threshold]))
-                curve_points.append({"x": x_val, "y": y_val})
+                y_val = sum(c * (x_val ** k) for k, c in enumerate(scaled_coeffs))
+                curve_points.append({"x": x_val, "y": round(y_val, 2)})
 
             return {
                 "status": "SUCCESS",
